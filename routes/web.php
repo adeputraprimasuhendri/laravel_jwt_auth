@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::prefix('v1')->group(function () {
     Route::post('register', 'UserController@register');
     Route::post('login', 'UserController@login');
@@ -42,4 +47,3 @@ Route::prefix('v1')->group(function () {
     Route::post('rack/update', 'RackController@update');
     Route::delete('rack/delete', 'RackController@delete');
 })->middleware('jwt.verify');
-
