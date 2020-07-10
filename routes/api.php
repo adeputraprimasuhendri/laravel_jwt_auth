@@ -13,7 +13,6 @@ Route::prefix('v1')->group(function () {
     Route::post('product/update', 'ProductController@update')->middleware('jwt.verify');
     Route::delete('product/delete', 'ProductController@delete')->middleware('jwt.verify');
     
-    
     Route::get('category', 'CategoryController@index')->middleware('jwt.verify');
     Route::get('category/{id}', 'CategoryController@detail')->middleware('jwt.verify');
     Route::post('category/create', 'CategoryController@create')->middleware('jwt.verify');
