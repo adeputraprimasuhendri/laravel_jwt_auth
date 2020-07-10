@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::domain('api.kdaimu.com/v1/')->group(function () {
+Route::prefix('v1')->group(function () {
     Route::post('register', 'UserController@register');
     Route::post('login', 'UserController@login');
     Route::get('user', 'UserController@getAuthenticatedUser');
