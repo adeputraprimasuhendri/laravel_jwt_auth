@@ -68,7 +68,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Kdamimu.com - Jual Mudah Cara Cepat
+                    Kdaimu.com - Jual Mudah Cara Cepat
                 </div>
 
                 <div class="links">
