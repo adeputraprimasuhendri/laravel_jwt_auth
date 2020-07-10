@@ -5,22 +5,44 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\ProdukModel;
+
 class ProductController extends Controller
 {
     public function index(){
-        $produk = DB::table('produk')
-        ->select('produk.id', 'produk.nama', 'produk.harga_beli', 'produk.harga_jual', 'produk.stok', 'produk.barcode', 'produk.gambar', 'kategori.nama as kategori', 'merek.nama as merek', 'rak.nama as rak')
+        $data = DB::table('produk')
+        ->select('produk.id', 'produk.kategori as id_kategori', 'kategori.nama as kategori', 'produk.merek as id_merek', 'merek.nama as merek', 'produk.rak as id_rak', 'rak.nama as rak', 'produk.nama', 'produk.gambar', 'produk.keterangan', 'produk.harga_beli', 'produk.harga_jual', 'produk.stok', 'produk.barcode')
         ->leftJoin('kategori', 'kategori.id', '=', 'produk.kategori')
         ->leftJoin('merek', 'merek.id', '=', 'produk.merek')
         ->leftJoin('rak', 'rak.id', '=', 'produk.rak')
+        ->orderBy('produk.nama', 'asc')
         ->get();
-        return response()->json($produk);
+        if($data){
+            return response()->json($data);
+        }else{
+            return response()->json([
+                'message' => 'Failed',
+                'status' => false,
+            ]);
+        }
     }
     public function detail($id){
         $data = DB::table('produk')
+        ->select('produk.id', 'produk.kategori as id_kategori', 'kategori.nama as kategori', 'produk.merek as id_merek', 'merek.nama as merek', 'produk.rak as id_rak', 'rak.nama as rak', 'produk.nama', 'produk.gambar', 'produk.keterangan', 'produk.harga_beli', 'produk.harga_jual', 'produk.stok', 'produk.barcode')
+        ->leftJoin('kategori', 'kategori.id', '=', 'produk.kategori')
+        ->leftJoin('merek', 'merek.id', '=', 'produk.merek')
+        ->leftJoin('rak', 'rak.id', '=', 'produk.rak')
+        ->orderBy('produk.nama', 'asc')
         ->where('id', $id)
         ->get();
-        return response()->json($data);
+        if($data){
+            return response()->json($data);
+        }else{
+            return response()->json([
+                'message' => 'Failed',
+                'status' => false,
+            ]);
+        }
     }
     public function create(Request $request){
         $kategori = $request->input('kategori');
@@ -97,8 +119,7 @@ class ProductController extends Controller
             ]);
         } 
     }
-    public function delete(Request $request){
-        $id = $request->input('id');
+    public function delete($id){
         $data = DB::table('produk')
         ->where('id', $id)
         ->delete();
