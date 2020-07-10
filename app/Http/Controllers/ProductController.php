@@ -9,6 +9,9 @@ class ProductController extends Controller
     public function index(Request $request){
         return 'DAFTAR';
     }
+    public function detail($id){
+        return 'DETAIL :: '.$id;
+    }
     public function create(Request $request){
         return 'CREATE';
     }
