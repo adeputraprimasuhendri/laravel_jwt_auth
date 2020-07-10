@@ -20,30 +20,30 @@ Route::get('/', function () {
 Route::prefix('v1')->group(function () {
     Route::post('register', 'UserController@register');
     Route::post('login', 'UserController@login');
-    Route::get('user', 'UserController@getAuthenticatedUser');
+    Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
     
-    Route::get('product', 'ProductController@index');
-    Route::get('product/{id}', 'ProductController@detail');
-    Route::post('product/create', 'ProductController@create');
-    Route::post('product/update', 'ProductController@update');
-    Route::delete('product/delete', 'ProductController@delete');
+    Route::get('product', 'ProductController@index')->middleware('jwt.verify');
+    Route::get('product/{id}', 'ProductController@detail')->middleware('jwt.verify');
+    Route::post('product/create', 'ProductController@create')->middleware('jwt.verify');
+    Route::post('product/update', 'ProductController@update')->middleware('jwt.verify');
+    Route::delete('product/delete', 'ProductController@delete')->middleware('jwt.verify');
     
     
-    Route::get('category', 'CategoryController@index');
-    Route::get('category/{id}', 'CategoryController@detail');
-    Route::post('category/create', 'CategoryController@create');
-    Route::post('category/update', 'CategoryController@update');
-    Route::delete('category/delete', 'CategoryController@delete');
+    Route::get('category', 'CategoryController@index')->middleware('jwt.verify');
+    Route::get('category/{id}', 'CategoryController@detail')->middleware('jwt.verify');
+    Route::post('category/create', 'CategoryController@create')->middleware('jwt.verify');
+    Route::post('category/update', 'CategoryController@update')->middleware('jwt.verify');
+    Route::delete('category/delete', 'CategoryController@delete')->middleware('jwt.verify');
     
-    Route::get('brand', 'BrandController@index');
-    Route::get('brand/{id}', 'BrandController@detail');
-    Route::post('brand/create', 'BrandController@create');
-    Route::post('brand/update', 'BrandController@update');
-    Route::delete('brand/delete', 'BrandController@delete');
+    Route::get('brand', 'BrandController@index')->middleware('jwt.verify');
+    Route::get('brand/{id}', 'BrandController@detail')->middleware('jwt.verify');
+    Route::post('brand/create', 'BrandController@create')->middleware('jwt.verify');
+    Route::post('brand/update', 'BrandController@update')->middleware('jwt.verify');
+    Route::delete('brand/delete', 'BrandController@delete')->middleware('jwt.verify');
     
-    Route::get('rack', 'RackController@index');
-    Route::get('rack/{id}', 'RackController@detail');
-    Route::post('rack/create', 'RackController@create');
-    Route::post('rack/update', 'RackController@update');
-    Route::delete('rack/delete', 'RackController@delete');
-})->middleware('jwt.verify');
+    Route::get('rack', 'RackController@index')->middleware('jwt.verify');
+    Route::get('rack/{id}', 'RackController@detail')->middleware('jwt.verify');
+    Route::post('rack/create', 'RackController@create')->middleware('jwt.verify');
+    Route::post('rack/update', 'RackController@update')->middleware('jwt.verify');
+    Route::delete('rack/delete', 'RackController@delete')->middleware('jwt.verify');
+});
