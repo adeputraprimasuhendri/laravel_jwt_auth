@@ -135,4 +135,22 @@ class ProductController extends Controller
             ]);
         }
     }
+    public function search(Request $request){
+        $data = DB::table('produk')
+        ->select('produk.id', 'produk.kategori as id_kategori', 'kategori.nama as kategori', 'produk.merek as id_merek', 'merek.nama as merek', 'produk.rak as id_rak', 'rak.nama as rak', 'produk.nama', 'produk.gambar', 'produk.keterangan', 'produk.harga_beli', 'produk.harga_jual', 'produk.stok', 'produk.barcode')
+        ->leftJoin('kategori', 'kategori.id', '=', 'produk.kategori')
+        ->leftJoin('merek', 'merek.id', '=', 'produk.merek')
+        ->leftJoin('rak', 'rak.id', '=', 'produk.rak')
+        ->orderBy('produk.nama', 'asc')
+        ->where('produk.nama', 'like', '%'.$request->input('txt').'%')
+        ->get();
+        if($data){
+            return response()->json($data);
+        }else{
+            return response()->json([
+                'message' => 'Failed',
+                'status' => false,
+            ]);
+        }
+    }
 }

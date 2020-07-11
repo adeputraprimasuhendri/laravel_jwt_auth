@@ -11,6 +11,7 @@ Route::get('product/{id}', 'ProductController@detail')->middleware('jwt.verify')
 Route::post('product/create', 'ProductController@create')->middleware('jwt.verify');
 Route::post('product/update', 'ProductController@update')->middleware('jwt.verify');
 Route::delete('product/delete/{id}', 'ProductController@delete')->middleware('jwt.verify');
+Route::post('product/search', 'ProductController@search')->middleware('jwt.verify');
 
 Route::get('category', 'CategoryController@index')->middleware('jwt.verify');
 Route::get('category/{id}', 'CategoryController@detail')->middleware('jwt.verify');
