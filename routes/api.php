@@ -30,3 +30,15 @@ Route::get('rack/{id}', 'RackController@detail')->middleware('jwt.verify');
 Route::post('rack/create', 'RackController@create')->middleware('jwt.verify');
 Route::post('rack/update', 'RackController@update')->middleware('jwt.verify');
 Route::delete('rack/delete/{id}', 'RackController@delete')->middleware('jwt.verify');
+
+Route::get('penjualan', 'PenjualanController@index')->middleware('jwt.verify');
+Route::get('penjualan/{id}', 'PenjualanController@detail')->middleware('jwt.verify');
+Route::post('penjualan/create', 'PenjualanController@create')->middleware('jwt.verify');
+Route::post('penjualan/update', 'PenjualanController@update')->middleware('jwt.verify');
+Route::delete('penjualan/delete/{id}', 'PenjualanController@delete')->middleware('jwt.verify');
+
+Route::get('pembelian', 'PembelianController@index')->middleware('jwt.verify');
+Route::get('pembelian/{id}', 'PembelianController@detail')->middleware('jwt.verify');
+Route::post('pembelian/create', 'PembelianController@create')->middleware('jwt.verify');
+Route::post('pembelian/update', 'PembelianController@update')->middleware('jwt.verify');
+Route::delete('pembelian/delete/{id}', 'PembelianController@delete')->middleware('jwt.verify');
