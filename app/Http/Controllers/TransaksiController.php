@@ -48,12 +48,14 @@ class TransaksiController extends Controller
         $produk = $request->input('produk');
         $qty = $request->input('qty');
         $harga = $request->input('harga');
+        $tipe = $request->input('tipe');
 
         $data = new TransaksiModel();
         $data->session = $session;
         $data->produk = $produk;
         $data->qty = $qty;
         $data->harga = $harga;
+        $data->tipe = $tipe;
         $data->save();
 
         if($data){
@@ -76,6 +78,7 @@ class TransaksiController extends Controller
         $produk = $request->input('produk');
         $qty = $request->input('qty');
         $harga = $request->input('harga');
+        $tipe = $request->input('tipe');
 
         $data = DB::table('transaksi')
         ->where('id', $id)
@@ -83,7 +86,8 @@ class TransaksiController extends Controller
             'session' => $session,
             'produk' => $produk,
             'qty' => $qty,
-            'harga' => $harga
+            'harga' => $harga,
+            'tipe' => $tipe
         ]);
 
         if($data){
