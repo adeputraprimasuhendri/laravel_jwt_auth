@@ -42,3 +42,9 @@ Route::get('pembelian/{id}', 'PembelianController@detail')->middleware('jwt.veri
 Route::post('pembelian/create', 'PembelianController@create')->middleware('jwt.verify');
 Route::post('pembelian/update', 'PembelianController@update')->middleware('jwt.verify');
 Route::delete('pembelian/delete/{id}', 'PembelianController@delete')->middleware('jwt.verify');
+
+Route::get('transaksi', 'TransaksiController@index')->middleware('jwt.verify');
+Route::get('transaksi/{id}', 'TransaksiController@detail')->middleware('jwt.verify');
+Route::post('transaksi/create', 'TransaksiController@create')->middleware('jwt.verify');
+Route::post('transaksi/update', 'TransaksiController@update')->middleware('jwt.verify');
+Route::delete('transaksi/delete/{id}', 'TransaksiController@delete')->middleware('jwt.verify');
